@@ -1,4 +1,4 @@
-final string code="//Created with Electruino by CapizziDev";
+final string code="//Created with Electruino by CapizziDev \n";
 final string codebackup=code;
 button if =(button) FindViewById(R.id.iff);
             contatore++;
