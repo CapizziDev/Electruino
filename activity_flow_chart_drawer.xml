@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drive"
+            android:icon="@drawable/google_drive"
+            android:title="Drive" />
+
+
+    </group>
+     <item android:title="Operatori">
+
+        <menu>
+            <item
+            android:id="@+id/If"
+            android:icon="@drawable/ifico"
+            android:title="If" />
+        <item
+            android:id="@+id/For"
+            android:icon="@drawable/ffforrr"
+            android:title="For" />
+        <item
+            android:id="@+id/While"
+            android:icon="@drawable/wwh"
+            android:title="While" />
+        <item
+            android:id="@+id/Dow"
+            android:icon="@drawable/dow"
+            android:title="Do-While" />
+        </menu>
+    </item>
+
+    <item android:title="Boleani">
+        <menu>
+            <item
+                android:id="@+id/or"
+                android:icon="@drawable/or"
+                android:title="OR" />
+            <item
+                android:id="@+id/xor"
+                android:icon="@drawable/xor"
+                android:title="XOR" />
+            <item
+                android:id="@+id/and"
+                android:icon="@drawable/and"
+                android:title="AND" />
+            <item
+                android:id="@+id/not"
+                android:icon="@drawable/not"
+                android:title="NOT" />
+        </menu>
+    </item>
+
+</menu>
