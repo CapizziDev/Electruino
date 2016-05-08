@@ -1,13 +1,15 @@
 package capizzidev.projectuno;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.Gravity;
 import android.view.MotionEvent;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,8 +18,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class FlowChart extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,6 +31,9 @@ public class FlowChart extends AppCompatActivity
     int contatore=0;
     int windowwidth;
     int windowheight;
+    String code="//Created with Electruino by CapizziDev";
+
+    TextView tx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,7 @@ public class FlowChart extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Cancello...", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                tx=(TextView) findViewById(R.id.textView2);
             }
         });
 
@@ -107,8 +117,8 @@ public class FlowChart extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        final String code="//Created with Electruino by CapizziDev";
-        final String codebackup=code;
+        final Intent mRNA=new Intent(FlowChart.this,Arduino.class);
+        mRNA.putExtra("tran",code);
 
         if (id == R.id.If) {
             // Handle the if action
@@ -116,8 +126,51 @@ public class FlowChart extends AppCompatActivity
             final RelativeLayout FC = (RelativeLayout) findViewById(R.id.FC);
             final ImageView componente = new ImageView(FlowChart.this);
             componente.setImageResource(R.drawable.if_else);
-            componente.setX(windowwidth / 2);
+            componente.setX(windowheight/2);
             FC.addView(componente);
+
+            AlertDialog.Builder msgbox=new AlertDialog.Builder(this);
+            msgbox.setTitle("If Builder");
+            msgbox.setMessage("Settare l'if");
+            msgbox.setIcon(R.drawable.ifico);
+            msgbox.setCancelable(false);
+            Context context = FC.getContext();
+            LinearLayout layout = new LinearLayout(context);
+            layout.setOrientation(LinearLayout.VERTICAL);
+
+            final EditText condizione = new EditText(context);
+            condizione.setHint("Condizioni");
+            layout.addView(condizione);
+            final EditText input = new EditText(context);
+            input.setHint("Vero");
+            layout.addView(input);
+            final EditText El = new EditText(context);
+            El.setHint("Falso");
+            layout.addView(El);
+
+
+            msgbox.setView(layout);
+
+
+            msgbox.setPositiveButton("Crea", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                 code = code + "\n if("+condizione.getText().toString()+") {\n"+input.getText().toString()+
+                         "}\n"+"else{\n"+ El.getText().toString() +"\n}";
+                 mRNA.putExtra("tran",code);
+                    tx=(TextView) findViewById(R.id.textView2);
+                    tx.setText(code);
+                 }
+            });
+            msgbox.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog alert=msgbox.create();
+            alert.show();
 
         } else if (id == R.id.For) {
 
