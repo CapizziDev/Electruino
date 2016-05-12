@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity
                             }
 
                             layoutParams.leftMargin = x_cord - 25;
-                            layoutParams.topMargin = y_cord - 75;
+                            layoutParams.topMargin = y_cord - 25;
 
                             componente.setLayoutParams(layoutParams);
                             break;

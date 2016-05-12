@@ -29,6 +29,7 @@ public class FlowChart extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     int contatore=0;
+    int altezza=0;
     int windowwidth;
     int windowheight;
     String code="//Created with Electruino by CapizziDev";
@@ -48,7 +49,7 @@ public class FlowChart extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Cancello...", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                tx=(TextView) findViewById(R.id.textView2);
+                ;
             }
         });
 
@@ -127,7 +128,9 @@ public class FlowChart extends AppCompatActivity
             final ImageView componente = new ImageView(FlowChart.this);
             componente.setImageResource(R.drawable.if_else);
             componente.setX(windowheight/2);
+            altezza=altezza+200;
             FC.addView(componente);
+            componente.setY(altezza);
 
             AlertDialog.Builder msgbox=new AlertDialog.Builder(this);
             msgbox.setTitle("If Builder");
@@ -158,8 +161,7 @@ public class FlowChart extends AppCompatActivity
                  code = code + "\n if("+condizione.getText().toString()+") {\n"+input.getText().toString()+
                          "}\n"+"else{\n"+ El.getText().toString() +"\n}";
                  mRNA.putExtra("tran",code);
-                    tx=(TextView) findViewById(R.id.textView2);
-                    tx.setText(code);
+
                  }
             });
             msgbox.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
