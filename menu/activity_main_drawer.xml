@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drive"
+            android:icon="@drawable/google_drive"
+            android:title="Drive" />
+
+
+    </group>
+    <item android:title="Strumenti">
+        <menu>
+            <item android:id="@+id/cavo"
+                android:icon="@drawable/vector_line"
+                android:title="Cavo"/>
+
+            <item android:id="@+id/bottone"
+                android:icon="@drawable/but"
+                android:title="Pulsante"/>
+
+            <item
+                android:id="@+id/led"
+                android:icon="@drawable/led_variant_outline"
+                android:title="Led" />
+
+            <item
+                android:id="@+id/ldr"
+                android:icon="@drawable/weather_sunny"
+                android:title="LDR" />
+
+            <item
+                android:id="@+id/microfono"
+                android:icon="@drawable/microphone_variant"
+                android:title="Microfono" />
+
+            <item
+                android:id="@+id/resistenza"
+                android:icon="@drawable/resistenza"
+                android:title="Resistenza" />
+
+            <item
+                android:id="@+id/ceramica"
+                android:icon="@drawable/ceramica"
+                android:title="Cond.Ceramica" />
+
+        </menu>
+    </item>
+
+    <item android:title="Boleani">
+        <menu>
+            <item
+                android:id="@+id/or"
+                android:icon="@drawable/or"
+                android:title="OR" />
+            <item
+                android:id="@+id/xor"
+                android:icon="@drawable/xor"
+                android:title="XOR" />
+            <item
+                android:id="@+id/and"
+                android:icon="@drawable/and"
+                android:title="AND" />
+            <item
+                android:id="@+id/not"
+                android:icon="@drawable/not"
+                android:title="NOT" />
+        </menu>
+    </item>
+
+
+
+</menu>
